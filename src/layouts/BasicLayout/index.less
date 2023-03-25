@@ -1,0 +1,23 @@
+.warpper {
+  display: flex;
+  flex-direction: column;
+  min-width: 100vw; // 最小宽度
+  height: 100vh;
+  min-height: 100vh;
+  max-height: 100vh;
+  overflow: hidden;
+
+  .container {
+    height: 100%;
+    display: flex;
+    flex-grow: 1;
+    justify-content: space-between;
+
+    .main {
+      flex-grow: 1;
+      height: 100%;
+      min-width: 100vw;
+      overflow: auto;
+    }
+  }
+}

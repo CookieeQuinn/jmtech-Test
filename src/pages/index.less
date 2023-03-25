@@ -1,0 +1,161 @@
+.container {
+  min-height: 100vh;
+  overflow: scroll;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background: linear-gradient(#ace0f9, #fff1eb);
+  .info {
+    padding: 10rem 0 5rem 0;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    font-family: 'IdeaFonts-JueJiangHei-85';
+    color: #1d768a;
+    .title-section {
+      margin-bottom: 1rem;
+      display: flex;
+      flex-direction: column;
+      font-weight: 900;
+      .title {
+        flex: auto;
+        margin: 0;
+        font-size: 4rem;
+        line-height: 5rem;
+        color: #1d768a;
+      }
+      .slogan {
+        font-size: 1rem;
+        flex: auto;
+        word-spacing: 1rem;
+      }
+    }
+    .desc {
+      max-width: 60%;
+      white-space: pre-line;
+      font-size: 1rem;
+      line-height: 2.5;
+      margin-bottom: 2em;
+    }
+    .contact {
+      display: flex;
+      position: relative;
+      .QRCode {
+        position: absolute;
+        top: calc(-45%);
+        left: calc(-40%);
+        width: calc(40%);
+        height: calc(300%);
+        overflow: hidden;
+        img {
+          position: absolute;
+          left: calc(100%);
+          width: 10em;
+          height: 10em;
+        }
+        .imgShow {
+          //动画结束后保留在最后一帧的状态
+          animation: QRCode 2s ease forwards;
+        }
+        @keyframes QRCode {
+          0% {
+            left: calc(100%);
+            opacity: 0;
+          }
+          100% {
+            left: 0;
+            opacity: 1;
+          }
+        }
+      }
+      .contact-btn {
+        position: relative;
+        width: 9rem;
+        height: 2rem;
+        margin: 1rem;
+        line-height: 2rem;
+        // border: 2px solid #1d768a;
+        // border会与content产生空隙，因为设备物理像素解析不精确
+        outline: 2px solid #1d768a;
+        // outline-radius: 0.5rem;
+        // outline-radius只有firefox生效
+        // 但是border-radius也可以设置outline圆角
+        border-radius: 0.5rem;
+        overflow: hidden;
+        font-size: 1rem;
+        text-align: center;
+        // background: transparent;
+        color: #1d768a;
+        cursor: pointer;
+      }
+      // 方案1,开启3D
+      .mask {
+        width: 100%;
+        flex-direction: column;
+        transform-style: preserve-3d;
+        transition: 0.8s cubic-bezier(0.19, 1, 0.22, 1);
+        .showcode {
+          color: #ffffff;
+          background-color: #1d768a;
+          transform: rotateX(-90deg);
+        }
+      }
+      .contact-btn:hover .mask {
+        transform: rotateX(90deg);
+        transform-origin: center 25%;
+      }
+
+      // 方案2,使用定位+动画
+      .contactStyle {
+        position: relative;
+        z-index: 1;
+      }
+      // 鼠标离开时，文字具有向下移动的趋势的动画效果
+      .contact-anima {
+        animation: animate-prev 1s cubic-bezier(0.075, 0.82, 0.165, 1);
+      }
+      // 鼠标离开时，色块先快后慢地向下平移
+      .blackMask {
+        position: absolute;
+        background-color: #1d768a;
+        top: calc(100%);
+        left: -0.5em;
+        width: 110%;
+        height: 150%;
+        transition: 0.6s cubic-bezier(0.075, 0.82, 0.165, 1);
+      }
+      // 鼠标悬停时，色块较快地向上平移
+      .contact-btn:hover .blackMask {
+        top: -0.5em;
+        transition: 0.2s ease;
+      }
+      // 鼠标悬停时，文字变色，并且具有向上移动的趋势动画效果
+      .contact-btn:hover .contactStyle {
+        color: #ffffff;
+        animation: animate-next 1s cubic-bezier(0.075, 0.82, 0.165, 1);
+      }
+      // 色块向下滑动时，文字有一个从上往下移动的趋势
+      @keyframes animate-prev {
+        0% {
+          top: -0.5rem;
+        }
+        100% {
+          top: 0;
+        }
+      }
+      // 色块向上滑动时，文字有一个从下往上移动的趋势
+      @keyframes animate-next {
+        0% {
+          top: 0.5rem;
+        }
+        100% {
+          top: 0;
+        }
+      }
+    }
+  }
+  .case {
+  }
+}
