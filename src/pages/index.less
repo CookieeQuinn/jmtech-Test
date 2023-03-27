@@ -39,6 +39,29 @@
       line-height: 2.5;
       margin-bottom: 2em;
     }
+    // PC端下，MoblieQRCode不显示
+    @media screen and (min-width: 600px) {
+      .MoblieQRCode {
+        display: none;
+      }
+    }
+    // 移动端下，MoblieQRCode显示
+    @media screen and (max-width: 600px) {
+      .MoblieQRCode {
+        .MoblieImgShow {
+          //动画结束后保留在最后一帧的状态
+          animation: QRCode 2s ease forwards;
+        }
+        @keyframes QRCode {
+          0% {
+            opacity: 0;
+          }
+          100% {
+            opacity: 1;
+          }
+        }
+      }
+    }
     .contact {
       display: flex;
       position: relative;
@@ -70,6 +93,12 @@
           }
         }
       }
+      // 移动端下QRCode不显示
+      @media screen and (max-width: 600px) {
+        .QRCode {
+          display: none;
+        }
+      }
       .contact-btn {
         position: relative;
         width: 9rem;
@@ -79,7 +108,7 @@
         // border: 2px solid #1d768a;
         // border会与content产生空隙，因为设备物理像素解析不精确
         outline: 2px solid #1d768a;
-        // outline-radius: 0.5rem;
+        -moz-outline-radius: 0.5rem;
         // outline-radius只有firefox生效
         // 但是border-radius也可以设置outline圆角
         border-radius: 0.5rem;
@@ -126,13 +155,13 @@
         height: 150%;
         transition: 0.6s cubic-bezier(0.075, 0.82, 0.165, 1);
       }
-      // 鼠标悬停时，色块较快地向上平移
-      .contact-btn:hover .blackMask {
+      // 点击按钮后的动画：色块较快地向上平移
+      .blackMaskAnima {
         top: -0.5em;
         transition: 0.2s ease;
       }
-      // 鼠标悬停时，文字变色，并且具有向上移动的趋势动画效果
-      .contact-btn:hover .contactStyle {
+      // 点击按钮后的动画：文字变色，并且具有向上移动的趋势动画效果
+      .contactStyleAnima {
         color: #ffffff;
         animation: animate-next 1s cubic-bezier(0.075, 0.82, 0.165, 1);
       }
@@ -154,8 +183,22 @@
           top: 0;
         }
       }
+
+      @media screen and (max-width: 600px) {
+        .hideBtn {
+          display: none;
+        }
+      }
     }
   }
   .case {
+    width: calc(60%);
+    margin: 3rem;
+  }
+  @media screen and (max-width: 600px) {
+    .case {
+      width: calc(80%);
+      margin: 3rem;
+    }
   }
 }

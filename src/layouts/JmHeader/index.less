@@ -1,15 +1,38 @@
 .header {
+  z-index: 1;
   position: fixed;
   display: flex;
   justify-content: space-between;
   min-width: 100%;
   min-height: 6em;
   line-height: 2em;
-  background: #ac8b8b4a;
+  background: #ac8b8b00;
   padding: 2em;
 }
 .left {
+  img {
+    width: 3rem;
+  }
 }
 .right {
+  display: flex;
   color: #1d768a;
+  .menuList {
+    display: flex;
+    .menuItem {
+      cursor: pointer;
+      .title {
+        margin: 1rem;
+      }
+    }
+    .menuItem:hover {
+    }
+
+    .activeMenu {
+      .title {
+        color: #ffffff;
+        font-weight: bold;
+      }
+    }
+  }
 }

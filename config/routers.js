@@ -1,8 +1,9 @@
 export const menuRouter = [
   {
-    title: 'Welcome',
+    title: '案例',
     name: 'Welcome',
     path: '/',
+    exact: true,
     component: 'index',
     icon: {
       normal: 'welcome',
@@ -10,7 +11,7 @@ export const menuRouter = [
     },
   },
   {
-    title: 'About',
+    title: '关于我们',
     name: 'About',
     path: '/about',
     component: 'about',
@@ -24,30 +25,26 @@ export const menuRouter = [
     name: 'User List',
     path: '/user',
     component: 'userList',
+    hideInMenu: true,
     icon: {
       normal: 'userList',
       active: 'userListSelected',
     },
   },
   {
-    title: 'User Info',
-    path: '/user/:id',
-    component: 'user',
-    hideInMenu: true,
+    title: 'EN',
+    // path: '/user/:id',
+    // component: 'user',
+    // hideInMenu: true,
   },
 ];
 
 export default [
-  // {
-  //   title: 'Login',
-  //   path: '/login',
-  //   name: 'login',
-  //   component: 'Login',
-  // },
   {
     title: 'Welcome',
     path: '/',
-    component: '../layouts/BasicLayout/BasicLayout',
+    component: '../layouts',
+    // component: '../layouts/BasicLayout/BasicLayout',
     routes: menuRouter,
   },
 ];
